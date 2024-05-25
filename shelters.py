@@ -3,8 +3,8 @@ from collections import namedtuple
 import math
 
 
-Distance = namedtuple("Distance", ['x', 'y', 'euclidean distance'])
-CONNECTION_PATH = "c:/Coding/ICS 33/airport.db"
+Distance = namedtuple("Distance", ['x', 'y', 'euclidean_distance'])
+CONNECTION_PATH = "c:/Coding/VenusHacks2024/Venus2024/Persephone.db"
 
 
 def calculate_distance(lat: int, long: int, distance, coordinates) -> Distance:
@@ -21,9 +21,9 @@ def calculate_distance(lat: int, long: int, distance, coordinates) -> Distance:
         return distance
 
 
-def get_x_y_list(connection: sqlite3.Connection, table_name):
-    get_x = f"SELECT latitude FROM {table_name}"
-    get_y = f"SELECT longitude FROM {table_name}"
+def get_x_y_list(connection: sqlite3.Connection):
+    get_x = "SELECT latitude FROM Shelter"
+    get_y = "SELECT longitude FROM Shelter"
 
     cursor = connection.execute(get_x)
     x = cursor.fetchall()
@@ -33,7 +33,13 @@ def get_x_y_list(connection: sqlite3.Connection, table_name):
     y = cursor.fetchall()
     cursor.close()
 
-    return x, y
+    while ("latitude", ) in x:
+        x.remove(("latitude", ))
+
+    while ("longitude", ) in y:
+        y.remove(("longitude", ))
+
+    return x[1:], y[1:]
 
 
 def closest_five(top: list[Distance], distance: Distance) -> list:
@@ -43,7 +49,9 @@ def closest_five(top: list[Distance], distance: Distance) -> list:
         if max_dist > distance[-1]:
             del_ind = dists.index(max_dist)
             top.pop(del_ind)
-    top.append(distance)
+            top.append(distance)
+    elif len(top) < 5:
+        top.append(distance)
     return top
 
 
@@ -58,39 +66,49 @@ def location(location_info):
     return name, phys_address, hours, phone, email, desc
 
 
-def get_closest(coordinates: tuple, connection: sqlite3.Connection, table_name: str):
+def get_closest(coordinates: tuple, connection: sqlite3.Connection):
     """Gets the top 5 closest locations to current location."""
-    x, y = get_x_y_list(connection, table_name)
-
+    x, y = get_x_y_list(connection)
     top_5 = []
     distance = None
     for lat in x:
+        b = len(top_5)
         ind = x.index(lat)
-        distance = calculate_distance(lat, y[ind], distance, coordinates)
+        distance = calculate_distance(lat[0], y[ind][0], distance, coordinates)
         top_5 = closest_five(top_5, distance)
 
     return top_5
 
 
-def store_location_info(connection: sqlite3.Connection, table_name, distance: Distance, store: list):
-    command = f"SELECT * FROM {table_name} WHERE latitude = {distance[0]} AND longitude = {distance[1]};"
+def store_location_info(connection: sqlite3.Connection, distance: Distance, store: list):
+    command = f"SELECT * FROM Shelter WHERE latitude = {distance[0]} AND longitude = {distance[1]};"
     cursor = connection.execute(command)
     location_info = cursor.fetchall()
 
-    name, phys_address, hours, phone, email, desc = location(location_info)
+    name, phys_address, hours, phone, email, desc = location(location_info[0])
     
-    dict_element = {"name": name, "address": phys_address, "hours": hours, "phone": phone, "email": email, "description": desc}
+    dict_element = {"name": name, "address": phys_address, "hours": hours, "phone": phone,
+                    "email": email, "description": desc}
     store.append(dict_element)
     return store
 
 
-def main():
+def info_dict(coordinates):
     connection = sqlite3.connect(CONNECTION_PATH)
-    coordinates = None # get it from input
-    table_name = "Placeholder"
     shelters = []
-    top_5 = get_closest(coordinates, connection, table_name)
+    top_5 = get_closest(coordinates, connection)
     for locate in top_5:
-        shelters = store_location_info(connection, table_name, locate, shelters)
+        shelters = store_location_info(connection, locate, shelters)
 
     connection.close()
+    return shelters
+
+# if __name__ == "__main__":
+#     coordinates = (35, -118) # get it from input
+#     a = info_dict(coordinates)
+#     print(a)
+
+# git fetch
+# git add file.py
+# git commit -m "dsflkj"
+# git push
