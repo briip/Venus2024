@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Load CSS and JS files -->
+    <!-- 
+        Load your custom scripts!
+        These can retrieve and send data for the frontend,
+        as well as change the way the website looks!
+    -->
+        <link rel="stylesheet" href="styles.css">
+    <title>Persephone</title>
+</head>
+<body id="home">
+    <div class="container">
+        <!-- Integrating HTML, CSS and JS -->
+        <!-- 
+            This chunk of the site uses HTML, CSS and JS. If you look in script.js,
+            you can see how you can use JS to select elements from the HTML document.
+            If you look in styles.css, you can see how you can use CSS to style elements
+            in the HTML document.
+            By using the ids of each of the elements, both the JS and CSS files are able to
+            extract and modify the elements without having to do so in index.html. Otherwise,
+            if everything is in one file, the code will look extremely messy!
+            Here, we have a greeting initially called "Hello, world". However, using JS, you can
+            change the greeting to a custom input by clicking the button.
+        -->
+        <div class="topnav">
+            <a href="#home" id="maintitle">PERSEPHONE</a>
+            <a class="active" href="#home">HOME</a>
+            <a href="map.html">MAP</a>
+          </div>
+
+        <!-- Texts in HTML -->
+        <!-- 
+            There are diffent types of text elements, but the most common ones are header, paragraph, and anchor elements.
+            Headers go from h1 to h6, paragraph elements (p) are simply normal text, and anchor elements (a) are links
+            that can wrap around other elements (text and images) and link to another site using the href attribute.
+        -->
+        <div class="text">
+            <h1 id="title">PERSEPHONE</h1>
+            <p>A quick and easy place to access emergency service locations and women’s shelters</p>
+        </div>
+
+        <div class="horizontal-center">
+            <button id="mapbutton" href="map.html">TAKE ME TO THE MAP</button>
+        </div>
+        <div class="five-pointed-star five-pointed-star-1">   
+        </div>
+        <div class="five-pointed-star five-pointed-star-2">   
+        </div>
+        <div class="five-pointed-star five-pointed-star-3">   
+        </div>
+        <div class="five-pointed-star five-pointed-star-4">   
+        </div>
+        <div class="five-pointed-star five-pointed-star-5">   
+        </div>
+        <div class="five-pointed-star five-pointed-star-6">   
+        </div>
+        <div class="five-pointed-star five-pointed-star-7">   
+        </div>
+        <div class="five-pointed-star five-pointed-star-8">   
+        </div>
+        <div class="five-pointed-star five-pointed-star-9">   
+        </div>
+        <div class="five-pointed-star five-pointed-star-10">   
+        </div>
+        <div class="text">
+            <p id="disclaimer">*Currently only supports Los Angeles County, California</p>
+        </div>
+    </div>
+    </body>
