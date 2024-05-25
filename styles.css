@@ -1,0 +1,185 @@
+/* You can target elements by name/type */
+
+body {
+    background-image: linear-gradient(#FEDBDB, white);
+}
+
+.container {
+    height: 800px;
+    position: relative;
+    width: 1;
+  }
+  
+.horizontal-center {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+
+#maintitle {
+    text-decoration: solid;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+}
+
+.topnav {
+    overflow: hidden;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.topnav a {
+    float: left;
+    color: #100808;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    color: rgb(169, 117, 131);
+}
+
+/* You can target elements by class as well by preceding the class name with . */
+.text {
+    padding-top: 180px;
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    text-shadow: #100808;
+}
+
+.text #title {
+    font-size: 100px;
+    font-weight: lighter;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 25%;
+}
+
+.text p {
+    font-weight: lighter;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 33px;
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
+#mapbutton {
+    background-color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: 18px;
+    align-self: center;
+    width: 200px;
+    height: 40px;
+    border-radius: 3px;
+}
+
+
+.five-pointed-star {
+    --star-color: #EABFBF;
+    margin:1em auto;
+    position: absolute;
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-right: 1em solid transparent;
+    border-bottom: 0.7em solid var(--star-color);
+    border-left: 1em solid transparent;
+    transform: rotate(35deg);
+   }
+
+.five-pointed-star:before {
+    border-bottom: 0.8em solid var(--star-color);
+    border-left: 0.3em solid transparent;
+    border-right: 0.3em solid transparent;
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -0.45em;
+    left: -0.65em;
+    display: block;
+    content:"";
+    transform: rotate(-35deg);
+   }
+
+.five-pointed-star:after {
+    position: absolute;
+    display: block;
+    top: 0.03em;
+    left: -1.05em;
+    width: 0;
+    height: 0;
+    border-right: 1em solid transparent;
+    border-bottom: 0.7em solid var(--star-color);
+    border-left: 1em solid transparent;
+    transform: rotate(-70deg);
+    content:"";
+   }
+
+.five-pointed-star-1 {
+    font-size: 17px;
+    left: 175px;
+    top: 406px;
+}
+
+.five-pointed-star-2 {
+    font-size: 12px;
+    left: 303px;
+    top: 512px;
+}
+
+.five-pointed-star-3 {
+    font-size: 12px;
+    left: 1199px;
+    top: 341px;
+}
+
+.five-pointed-star-4 {
+    font-size: 17px;
+    left: 1084px;
+    top: 262px;
+}
+
+.five-pointed-star-5 {
+    font-size: 16px;
+    left: 985px;
+    top: 536px;
+}
+
+.five-pointed-star-6 {
+    font-size: 25px;
+    left: 1069px;
+    top: 482px;
+}
+
+.five-pointed-star-7 {
+    font-size: 12px;
+    left: 352px;
+    top: 317px;
+}
+
+.five-pointed-star-8 {
+    font-size: 25px;
+    left: 285px;
+    top: 278px;
+}
+
+.five-pointed-star-9 {
+    font-size: 19px;
+    left: 355px;
+    top: 536px;
+}
+
+.five-pointed-star-10 {
+    font-size: 18px;
+    left: 1239px;
+    top: 438px;
+}
+
+#disclaimer {
+    font-size: 12px;
+    text-align: center;
+}
