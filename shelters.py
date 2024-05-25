@@ -9,8 +9,6 @@ _CONNECTION_PATH = "c:/Coding/VenusHacks2024/Venus2024/Persephone.db"
 
 
 def _calculate_distance(lat: int, long: int, distance, coordinates) -> Distance:
-    # get all the addresses
-    # euclidean distance and then api if there's time
     x_coord = coordinates[0]
     y_coord = coordinates[1]
     edist = math.sqrt((lat - x_coord)**2 + (long - y_coord)**2)
@@ -65,7 +63,6 @@ def _extract_location_info(location_info):
 def _get_closest(coordinates: tuple, connection: sqlite3.Connection):
     """Gets the top 5 closest locations to current location."""
     x, y = _get_x_y_list(connection)
-    # print(x)
     top_5 = []
     distance = None
     for lat in x:
@@ -89,11 +86,9 @@ def _store_location_info(connection: sqlite3.Connection, distance: Distance, sto
     return store
 
 
-def info_dict():
+def info_dict(coordinates):
     connection = sqlite3.connect(_CONNECTION_PATH)
     shelters = []
-    coordinates = location.access()
-    # print(coordinates)
     # coordinates = (33.65157, -117.83427)
     top_5 = _get_closest(coordinates, connection)
     for locate in top_5:
@@ -101,3 +96,7 @@ def info_dict():
 
     connection.close()
     return shelters
+
+
+def current_location(coordinates=location.access()):
+    return coordinates
