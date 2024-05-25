@@ -2,11 +2,11 @@ import urllib.request
 import json
 
 
-_URL = 'https://geo.ipify.org/api/v2/country,city?apiKey=at_1sWg0U9lPFi4mgrc3CzTpw0ngaGOO&format=json'
+URL = 'https://geo.ipify.org/api/v2/country,city?apiKey=at_1sWg0U9lPFi4mgrc3CzTpw0ngaGOO&format=json'
 
 
 def access():
-    request = urllib.request.Request(_URL, data = None)
+    request = urllib.request.Request(URL, data = None)
     response = urllib.request.urlopen(request)
     response_data = response.read()
     response.close()
@@ -36,8 +36,3 @@ def access():
 #             },
 #             'isp': 'UCI'
 #             }
-
-
-if __name__ == "__main__":
-    data = access(URL)
-    print(data)
