@@ -77,6 +77,10 @@ body {
     border-radius: 3px;
 }
 
+#mapbutton:hover {
+    background-color: rgb(61, 60, 60);
+}
+
 
 .five-pointed-star {
     --star-color: #EABFBF;
