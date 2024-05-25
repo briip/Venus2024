@@ -107,3 +107,8 @@ def info_dict(coordinates):
 #     coordinates = (35, -118) # get it from input
 #     a = info_dict(coordinates)
 #     print(a)
+
+# git fetch
+# git add file.py
+# git commit -m "dsflkj"
+# git push
