@@ -18,7 +18,7 @@ def getdata():
     else:
         coord = shelters.current_location()
     response_data = shelters.info_dict(coord, filter)
-    return jsonify(response_data')
+    return jsonify(response_data)
 
 @app.route('/index.html')
 def home():
