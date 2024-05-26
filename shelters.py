@@ -78,7 +78,7 @@ def _extract_location_info(location_info):
     zipcode = location_info[22]
     lat = location_info[25]
     lng = location_info[26]
-    
+
 
     return name, phys_address, hours, phone, email, desc, zipcode, lat, lng
 
@@ -144,7 +144,7 @@ def _store_location_info(connection: sqlite3.Connection, distance: Distance, sto
     return store
 
 
-def info_dict(coordinates, filtering=None):
+def info_dict(coordinates, filtering="all"):
     connection = sqlite3.connect(_CONNECTION_PATH)
     # coordinates = (33.65157, -117.83427)
     if type(coordinates) is int:
@@ -191,6 +191,6 @@ def map_location_format(info: list[dict]):
 
 
 # coord = current_location((33.65157, -117.83427))
-# a = info_dict(90018, "Women's Only")
+# a = info_dict(coord, "all")
 # print(a)
 # print(len(a))
