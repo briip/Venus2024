@@ -52,20 +52,22 @@
                   </select>
                 <input id="location" placeholder=" Enter zip code...">
                 <button type="submit" id="search">Search</button>
-                <button id="currentlocation">Use My Location</button>
+                <button onclick="getCurrentLocation()" id="currentlocation">Use My Location</button>
                 <br/>
             </div>
 
             <div id="maparea">
                 <iframe
+                    id = "mapiframe"
                     width="675"
                     height="450"
                     style="border:2"
                     loading="lazy"
                     allowfullscreen
                     referrerpolicy="no-referrer-when-downgrade"
-                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCREn6zRZ68S5xh7kMnUoM8M4o49qiIubY
-                        &q=LosAngeles+CA">
+                    src = 'https://www.google.com/maps/embed/v1/view?key=AIzaSyCREn6zRZ68S5xh7kMnUoM8M4o49qiIubY&center=33.6486618,-117.842745&zoom=15'
+                    
+                    >
                 </iframe>
             </div>
         </div>
@@ -76,6 +78,6 @@
 
 
     <!-- Load scripts at the end of your HTML to make pages load faster! -->
-    <script src="script.js"></script>
+    <script src="map.js"></script>
 </body>
 </html>
