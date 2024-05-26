@@ -40,8 +40,14 @@ function getCurrentLocation() {
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
         getEmbedUrl(lat,lon);
-        sendData(lat,lon);
-        generateResult();
+        var response = sendData(lat,lon);
+        if(response){
+          generateResult(response);
+        }
+        else{
+          generateResult();
+        }
+        
 
       }, function(error) {
         switch(error.code) {
