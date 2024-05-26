@@ -104,7 +104,7 @@ function sendData(zipcode=null, filter=null){
   {
     method: 'POST',
     headers:{'Content-Type': 'application/json'},
-    body: JSON.stringify({zipcode: zipcode, filter: filter})
+    body: JSON.stringify({'zipcode': zipcode, 'filter': filter})
   })
   .then(response =>{
     if(!response.ok){
