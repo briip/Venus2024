@@ -3,6 +3,7 @@ from collections import namedtuple
 import math
 import location
 import filters
+import json
 
 
 Distance = namedtuple("Distance", ['x', 'y', 'euclidean_distance'])
@@ -75,8 +76,11 @@ def _extract_location_info(location_info):
     email = location_info[17]
     desc = location_info[21]
     zipcode = location_info[22]
+    lat = location_info[25]
+    lng = location_info[26]
+    
 
-    return name, phys_address, hours, phone, email, desc, zipcode
+    return name, phys_address, hours, phone, email, desc, zipcode, lat, lng
 
 
 def _get_closest(coordinates, connection: sqlite3.Connection, filtering=None):
@@ -112,10 +116,11 @@ def _get_location_on_zip(connection: sqlite3.Connection, search_zip, filtering =
     store = []
 
     for i in location_info:
-        name, phys_address, hours, phone, email, desc, zipcode = _extract_location_info(i)
+        name, phys_address, hours, phone, email, desc, zipcode, lat, lng = _extract_location_info(i)
 
         dict_element = {"name": name, "address": phys_address, "hours": hours, "phone": phone,
-                    "email": email, "description": desc, "zipcode": zipcode}
+                    "email": email, "description": desc, "zipcode": zipcode, "latitude": lat,
+                    "longitude": lng}
         if descs:
             if dict_element["description"] in descs:
                 store.append(dict_element)
@@ -131,10 +136,10 @@ def _store_location_info(connection: sqlite3.Connection, distance: Distance, sto
     location_info = cursor.fetchall()
     cursor.close()
 
-    name, phys_address, hours, phone, email, desc, zipcode = _extract_location_info(location_info[0])
+    name, phys_address, hours, phone, email, desc, zipcode, lat, lng = _extract_location_info(location_info[0])
     
     dict_element = {"name": name, "address": phys_address, "hours": hours, "phone": phone,
-                    "email": email, "description": desc, "zipcode": zipcode}
+                    "email": email, "description": desc, "zipcode": zipcode, "latitude": lat, "longitude": lng}
     store.append(dict_element)
     return store
 
@@ -169,6 +174,20 @@ def info_dict(coordinates, filtering=None):
 
 def current_location(coordinates=location.access()):
     return coordinates
+
+
+def map_location_format(info: list[dict]):
+    # can add other features later.
+    total = []
+    for i in info:
+        new = [i["name"], i["latitude"], ["longitude"]]
+        total.append(new)
+    return total
+
+
+# def to_string(sdf):
+#     agd = sdf[0]
+#     return json.dumps(agd)
 
 
 # coord = current_location((33.65157, -117.83427))
