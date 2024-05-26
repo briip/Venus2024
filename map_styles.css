@@ -274,6 +274,9 @@ body {
     position:absolute;
     margin:1em auto;
     width:1em;
+    font-size: 7px;
+    top: 150px;
+    left: 880px;
   }
   
   .four-pointed-star:before{
@@ -294,13 +297,93 @@ body {
     transform:rotate(45deg) skewX(22.5deg) skewY(22.5deg);
   }
 
-  .four-pointed-star-1 {
-    font-size: 7px;
-    top: 150px;
-    left: 880px;
+
+.stars {
+    position:absolute;
+    margin:1em auto;
+    width:1em;
+  }
+  
+  .stars:before{
+    content:"";
+    position:absolute;
+    background:white;
+    width:1em;
+    height:1.15em;
+    transform:rotate(-45deg) skewX(22.5deg) skewY(22.5deg);
+  }
+  
+  .stars:after{
+    content:"";
+    position:absolute;
+    background:white;
+    width:1em;
+    height:1.15em;
+    transform:rotate(45deg) skewX(22.5deg) skewY(22.5deg);
   }
 
-  .circles {
+.stars-1 {
+    font-size: 10px;
+    top: 910px;
+    left: 145px;
+}
+
+.stars-2 {
+    font-size: 12px;
+    top: 945px;
+    left: 112px;
+}
+
+
+.stars-3 {
+    font-size: 10px;
+    top: 1080px;
+    left: 145px;
+}
+
+.stars-4 {
+    font-size: 12px;
+    top: 1115px;
+    left: 112px;
+}
+
+.stars-5 {
+    font-size: 10px;
+    top: 1240px;
+    left: 145px;
+}
+
+.stars-6 {
+    font-size: 12px;
+    top: 1275px;
+    left: 112px;
+}
+
+.stars-7 {
+    font-size: 10px;
+    top: 1400px;
+    left: 145px;
+}
+
+.stars-8 {
+    font-size: 12px;
+    top: 1435px;
+    left: 112px;
+}
+
+.stars-9 {
+    font-size: 10px;
+    top: 1560px;
+    left: 145px;
+}
+
+.stars-10 {
+    font-size: 12px;
+    top: 1595px;
+    left: 112px;
+}
+
+.circles {
     width: 50px;
     height: 50px;
     border-radius: 50%;
