@@ -13,9 +13,12 @@ def getdata():
     zipcode = data_received['zipcode']
     filter = data_received['filter']
 
-    coord = shelters.coordinates(zipcode)
-    response_data = shelters.info_dict(coord, filter)[0]
-    return jsonify(response_data)
+    if zipcode:
+        coord = shelters.current_location(zipcode)
+    else:
+        coord = shelters.current_location()
+    response_data = shelters.info_dict(coord, filter)
+    return jsonify(response_data')
 
 @app.route('/index.html')
 def home():
@@ -26,19 +29,9 @@ def start_screen():
     return render_template("index.html")
 
 
-"""
-@app.route('/')
-def sdkfj():
-    connection = get_connection()
-    [dictniary] = get_info()
-    locations = [[name, lat, lng], [name, lat, lng]] == sdlkfj()
-
-"""
-
-
 def hello_world():  # put application's code here
     return 'Hello World!'
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
