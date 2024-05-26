@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Load CSS and JS files -->
+    <!-- 
+        Load your custom scripts!
+        These can retrieve and send data for the frontend,
+        as well as change the way the website looks!
+    -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/map_styles.css') }}">
+    <title>Persephone</title>
+</head>
+<body id = "map">
+    <div class="container" id="maincont">
+        <!-- Integrating HTML, CSS and JS -->
+        <!-- 
+            This chunk of the site uses HTML, CSS and JS. If you look in script.js,
+            you can see how you can use JS to select elements from the HTML document.
+            If you look in styles.css, you can see how you can use CSS to style elements
+            in the HTML document.
+            By using the ids of each of the elements, both the JS and CSS files are able to
+            extract and modify the elements without having to do so in index.html. Otherwise,
+            if everything is in one file, the code will look extremely messy!
+            Here, we have a greeting initially called "Hello, world". However, using JS, you can
+            change the greeting to a custom input by clicking the button.
+        -->
+        <div class="topnav">
+            <a href="index.html" id="maintitle">PERSEPHONE</a>
+            <a class="active" href="index.html">HOME</a>
+            <a href="#map">MAP</a>
+          </div>
+
+        <!-- Texts in HTML -->
+        <!-- 
+            There are diffent types of text elements, but the most common ones are header, paragraph, and anchor elements.
+            Headers go from h1 to h6, paragraph elements (p) are simply normal text, and anchor elements (a) are links
+            that can wrap around other elements (text and images) and link to another site using the href attribute.
+        -->
+        <div class="text">
+            <h1 id="title">MAP</h1>
+        </div>
+
+        <div class="horizontal-center">
+            <div class="container" id="searcharea">
+                <select name="Filter" id="filter">
+                    <option value="all">All</option>
+                    <option value="women's shelters">Women's Shelters</option>
+                    <option value="dv services">Domestic Violence Services</option>
+                  </select>
+                <input id="location" placeholder=" Enter zip code...">
+                <button type="submit" id="search">Search</button>
+                <button id="currentlocation">Use My Location</button>
+                <br/>
+            </div>
+
+            <div id="maparea">
+                <iframe
+                    width="675"
+                    height="450"
+                    style="border:2"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCREn6zRZ68S5xh7kMnUoM8M4o49qiIubY
+                        &q=LosAngeles+CA">
+                </iframe>
+            </div>
+        </div>
+
+    <div class="moon"></div>
+    <div class="five-pointed-star"></div>
+    <div class="four-pointed-star"></div>
+
+
+    <!-- Load scripts at the end of your HTML to make pages load faster! -->
+    <script src="script.js"></script>
+</body>
+</html>

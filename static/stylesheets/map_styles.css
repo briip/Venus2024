@@ -1,0 +1,336 @@
+body {
+    background-image: radial-gradient(#FEDBDB, white);
+}
+
+#maincont {
+    height: 800px;
+    position: relative;
+    width: 1;
+  }
+  
+.horizontal-center {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+
+#maintitle {
+    text-decoration: solid;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+}
+
+.topnav {
+    overflow: hidden;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.topnav a {
+    float: left;
+    color: #100808;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    color: rgb(169, 117, 131);
+}
+
+.text #title {
+    font-size: 100px;
+    font-weight: lighter;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 25%;
+    text-align: center;
+}
+
+#search {
+    background: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: 18px;
+    width: 100px;
+    height: 40px;
+    border-radius: 3px;
+    margin-left: 5px;
+}
+
+#search:hover {
+    background-color: rgb(61, 60, 60);
+}
+
+
+#currentlocation {
+    background: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: 18px;
+    width: 200px;
+    height: 40px;
+    border-radius: 3px;
+    margin-left: 5px;
+}
+
+#currentlocation:hover {
+    background-color: rgb(61, 60, 60);
+}
+
+#searcharea {
+    align-items: center;
+    margin-bottom: 20px;
+    align-content: center;
+    margin: auto;
+    width: 46.9%;
+}
+
+
+#location {
+    width: 200px;
+    height: 35px;
+}
+
+#maparea {
+    margin: auto;
+    margin-top: 20px;
+}
+
+#filter {
+    width: 150px;
+    height: 40px;
+}
+
+#resultlist {
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 100px;
+    height: 1000px;
+}
+
+#resulttitle {
+    font-weight: lighter;
+    font-size: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 25%;
+    text-align: left;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+#result1 p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-left: 100px;
+}
+
+#result1 h2 {
+    font-weight: lighter;
+    margin-left: 100px;
+    font-size: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#result1map {
+    top: 895px;
+    left: 1100px;
+    position: absolute;
+}
+
+#result2 p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-left: 100px;
+}
+
+#result2 h2 {
+    font-weight: lighter;
+    margin-left: 100px;
+    font-size: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#result2map {
+    top: 1052px;
+    left: 1100px;
+    position: absolute;
+}
+
+#result3 p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-left: 100px;
+}
+
+#result3 h2 {
+    font-weight: lighter;
+    margin-left: 100px;
+    font-size: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#result3map {
+    top: 1215px;
+    left: 1100px;
+    position: absolute;
+}
+
+#result4 p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-left: 100px;
+}
+
+#result4 h2 {
+    font-weight: lighter;
+    margin-left: 100px;
+    font-size: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#result4map {
+    top: 1378px;
+    left: 1100px;
+    position: absolute;
+}
+
+#result5 p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-left: 100px;
+}
+
+#result5 h2 {
+    font-weight: lighter;
+    margin-left: 100px;
+    font-size: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#result5map {
+    top: 1540px;
+    left: 1100px;
+    position: absolute;
+}
+
+.moon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 10px 10px 0 0 #EABFBF;
+    position: absolute;
+    top: 100px;
+    left: 550px;
+}
+
+.five-pointed-star {
+    --star-color: #EABFBF;
+    font-size: 15px;
+    top: 100px;
+    left: 850px;
+    margin:1em auto;
+    position: absolute;
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-right: 1em solid transparent;
+    border-bottom: 0.7em solid var(--star-color);
+    border-left: 1em solid transparent;
+    transform: rotate(35deg);
+   }
+
+.five-pointed-star:before {
+    border-bottom: 0.8em solid var(--star-color);
+    border-left: 0.3em solid transparent;
+    border-right: 0.3em solid transparent;
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -0.45em;
+    left: -0.65em;
+    display: block;
+    content:"";
+    transform: rotate(-35deg);
+   }
+
+.five-pointed-star:after {
+    position: absolute;
+    display: block;
+    top: 0.03em;
+    left: -1.05em;
+    width: 0;
+    height: 0;
+    border-right: 1em solid transparent;
+    border-bottom: 0.7em solid var(--star-color);
+    border-left: 1em solid transparent;
+    transform: rotate(-70deg);
+    content:"";
+   }
+
+
+.four-pointed-star{
+    position:absolute;
+    margin:1em auto;
+    width:1em;
+  }
+  
+  .four-pointed-star:before{
+    content:"";
+    position:absolute;
+    background:#EABFBF;
+    width:1em;
+    height:1.15em;
+    transform:rotate(-45deg) skewX(22.5deg) skewY(22.5deg);
+  }
+  
+  .four-pointed-star:after{
+    content:"";
+    position:absolute;
+    background:#EABFBF;
+    width:1em;
+    height:1.15em;
+    transform:rotate(45deg) skewX(22.5deg) skewY(22.5deg);
+  }
+
+  .four-pointed-star-1 {
+    font-size: 7px;
+    top: 150px;
+    left: 880px;
+  }
+
+  .circles {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #EABFBF;
+    position: absolute;
+}
+
+.circles-1 {
+    top: 920px;
+    left: 110px;
+}
+
+
+.circles-2 {
+    top: 1090px;
+    left: 110px;
+}
+
+.circles-3 {
+    top: 1250px;
+    left: 110px;
+}
+
+
+.circles-4 {
+    top: 1410px;
+    left: 110px;
+}
+
+.circles-5 {
+    top: 1570px;
+    left: 110px;
+}
