@@ -1,15 +1,7 @@
 const apiKey = 'AIzaSyCREn6zRZ68S5xh7kMnUoM8M4o49qiIubY';
-var locations = [{'name': '1736 Family Crisis Center', 
-'address': '2116 Arlington Ave, Suite 200, Los Angeles, CA', 
-'hours': '24 Hrs-Crisis Hotline Service/Intake and Hotline (213) 222-1237, 24 Hrs-Youth Crisis/Shelter Hotline Service/Intake and Hotline (310) 379-3620, 24 Hrs-DV Shelter Hotline Service/Intake and Hotline (310) 370-5902, Community Service Center Service/Intake an', 
-'phone': 'NULL', 
-'email': 'www.1736fcc.org', 
-'description': 'The agency provides case management, counseling services, domestic violence services, family support services for low income families, runaway services, emergency and transitional shelter for battered women and their children, shelter for runaway/homeless youth, and welfare-to-work support services. \xa0Services are provided at two community service center locations in South Los Angeles and Torrance, an emergency youth shelter in Hermosa Beach, and four confidentially located domestic violence shelters.', 'zipcode': '90018', 'latitude': 34.03745995, 'longitude': -118.3175215},
-{'name': '1736 Family Crisis Center', 'address': '2116 Arlington Ave, Suite 200, Los Angeles, CA', 
-'hours': '24 Hrs-Crisis Hotline Service/Intake and Hotline (213) 222-1237, 24 Hrs-Youth Crisis/Shelter Hotline Service/Intake and Hotline (310) 379-3620, 24 Hrs-DV Shelter Hotline Service/Intake and Hotline (310) 370-5902, Community Service Center Service/Intake an', 
-'phone': 'NULL', 'email': 'www.1736fcc.org', 'description': 'The agency provides case management, counseling services, domestic violence services, family support services for low income families, runaway services, emergency and transitional shelter for battered women and their children, shelter for runaway/homeless youth, and welfare-to-work support services. \xa0Services are provided at two community service center locations in South Los Angeles and Torrance, an emergency youth shelter in Hermosa Beach, and four confidentially located domestic violence shelters.', 
-'zipcode': '90018', 'latitude': 34.03745995, 'longitude': -118.3175215},
-{'name': '1736 Family Crisis Center', 'address': '2116 Arlington Ave, Suite 200, Los Angeles, CA', 'hours': '24 Hrs-Crisis Hotline Service/Intake and Hotline (213) 222-1237, 24 Hrs-Youth Crisis/Shelter Hotline Service/Intake and Hotline (310) 379-3620, 24 Hrs-DV Shelter Hotline Service/Intake and Hotline (310) 370-5902, Community Service Center Service/Intake an', 'phone': 'NULL', 'email': 'www.1736fcc.org', 'description': 'The agency provides case management, counseling services, domestic violence services, family support services for low income families, runaway services, emergency and transitional shelter for battered women and their children, shelter for runaway/homeless youth, and welfare-to-work support services. \xa0Services are provided at two community service center locations in South Los Angeles and Torrance, an emergency youth shelter in Hermosa Beach, and four confidentially located domestic violence shelters.', 'zipcode': '90018', 'latitude': 34.03745995, 'longitude': -118.3175215}]
+var locations = [{'name': "Women's And Children's Crisis Shelter", 'address': '13305 Penn St, NULL, Whittier, CA', 'hours': 'Administrative (562) 945-3937,  Service/Intake and Hotline (562) 945-3939', 'phone': 'NULL', 'email': 'NULL', 'description': 'The agency provides domestic violence services for low-income victims of intimate partner domestic violence and their children from all areas of Los Angeles County.', 'zipcode': '90602', 'latitude': 33.97583807, 'longitude': -118.0335874},
+{'name': 'Homeless Shelter For Women And Children', 'address': '4513 E. Compton Blvd., NULL, Compton, CA', 'hours': 'NULL', 'phone': 'NULL', 'email': 'www.cwroshelter.org', 'description': 'The Agency Provides Shelter For Homeless Single Women And Women With Children Who Are In Los Angeles County.  The Shelter May Assist Women Who Have Mental/Emotional Problems; The Shelter Is Also Accessible For Women Who Use Wheelchairs.', 'zipcode': '90221', 'latitude': 33.89643599, 'longitude': -118.1927356}, {'name': 'Womenshelter Of Long Beach', 'address': '930 Pacific Ave., NULL, Long Beach, CA', 'hours': 'Service/Intake and Administration (562) 437-7233,  FAX (562) 436-4943, 562) HER HOME - 24 hrs. Service/Intake and Hotline (562) 437-4663', 'phone': 'NULL', 'email': 'www.womenshelterlb.com/', 'description': 'The agency provides shelter and domestic violence services for victims of domestic violence and their children as well as volunteer opportunities for individuals living in Los Angeles County.', 'zipcode': '90813', 'latitude': 33.778375, 'longitude': -118.1933}, {'name': 'Interval House', 'address': '6615 E. Pacific Coast Highway, Outreach Office| Suite 170, Long Beach, CA', 'hours': 'Administrative (562) 594-9492, L A County - 24 hours Service/Intake and Hotline (562) 594-4555', 'phone': 'NULL', 'email': 'www.intervalhouse.org', 'description': "This agency provides domestic violence services, a battered women's shelter for battered women and their children and welfare-to-work support services to battered women who receive CalWORKs and live primarily in the Long Beach and the surrounding areas.", 'zipcode': '90803', 'latitude': 33.755173, 'longitude': -118.108203},
+{'name': 'Doors Of Hope', 'address': '529 Broad Ave, NULL, Wilmington, CA', 'hours': 'Service/Intake and Administration (310) 518-3667,  FAX (310) 513-6113', 'phone': 'NULL', 'email': 'www.doorsofhopewomensshelter.org', 'description': 'The agency provides shelter for single women in Los Angeles County.', 'zipcode': '90744', 'latitude': 33.7766381, 'longitude': -118.2610311}]
 
 function generateResult(data=locations){
   for(let i=0; i<data.length; i++){
@@ -110,7 +102,7 @@ function sendData(zipcode=null, filter=null){
     if(!response.ok){
       throw new Error('Network response was not ok');
     }
-    return response.json();
+    return getShelterLocation(response.json());
   })
   .then(data => {
     console.log("Response from Flask: ", data);
@@ -119,4 +111,14 @@ function sendData(zipcode=null, filter=null){
   .catch(error=>{
     console.error('There was a problem with your fetch operation: ', error);
   });
+}
+
+function getShelterLocation(data){
+  let location_list = [];
+  for(let i=0; i<data.length; i++){
+    var current_data = data[i];
+    location_list.push(current_data);
+
+  }
+  return location_list;
 }
