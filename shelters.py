@@ -74,21 +74,19 @@ def _extract_location_info(location_info):
     phone = location_info[16]
     email = location_info[17]
     desc = location_info[21]
+    zipcode = location_info[22]
 
-    return name, phys_address, hours, phone, email, desc
+    return name, phys_address, hours, phone, email, desc, zipcode
 
 
-def _get_closest(coordinates: tuple, connection: sqlite3.Connection, filter=None):
+def _get_closest(coordinates, connection: sqlite3.Connection, filtering=None):
     """Gets the top 5 closest locations to current location."""
-    if filter == "Women's Only":
+    if filtering == "Women's Only":
         x, y = compile_filters(connection, filters.filter_womens(connection))
-    elif filter == "Domestic Violence":
+    elif filtering == "Domestic Violence":
         x, y = compile_filters(connection, filters.filter_dv(connection))
     else:
         x, y = compile_filters(connection)
-
-    # print(len(x))
-    # print(len(y))
 
     top_5 = []
     distance = None
@@ -100,35 +98,72 @@ def _get_closest(coordinates: tuple, connection: sqlite3.Connection, filter=None
     return top_5
 
 
+def _get_location_on_zip(connection: sqlite3.Connection, search_zip, filtering = None):
+    descs = None
+    if filtering == "Women's Only":
+        descs = filters.filter_womens(connection)
+    elif filtering == "Domestic Violence":
+        descs = filters.filter_dv(connection)
+    command = f"SELECT * FROM Shelter WHERE zip = {search_zip};"
+    cursor = connection.execute(command)
+    location_info = cursor.fetchall()
+    cursor.close()
+
+    store = []
+
+    for i in location_info:
+        name, phys_address, hours, phone, email, desc, zipcode = _extract_location_info(i)
+
+        dict_element = {"name": name, "address": phys_address, "hours": hours, "phone": phone,
+                    "email": email, "description": desc, "zipcode": zipcode}
+        if descs:
+            if dict_element["description"] in descs:
+                store.append(dict_element)
+        else:
+            store.append(dict_element)
+    return store
+
+
+
 def _store_location_info(connection: sqlite3.Connection, distance: Distance, store: list):
     command = f"SELECT * FROM Shelter WHERE latitude = {distance[0]} AND longitude = {distance[1]};"
     cursor = connection.execute(command)
     location_info = cursor.fetchall()
-    # print(location_info)
+    cursor.close()
 
-    name, phys_address, hours, phone, email, desc = _extract_location_info(location_info[0])
+    name, phys_address, hours, phone, email, desc, zipcode = _extract_location_info(location_info[0])
     
     dict_element = {"name": name, "address": phys_address, "hours": hours, "phone": phone,
-                    "email": email, "description": desc}
+                    "email": email, "description": desc, "zipcode": zipcode}
     store.append(dict_element)
     return store
 
 
 def info_dict(coordinates, filtering=None):
     connection = sqlite3.connect(_CONNECTION_PATH)
-    shelters = []
     # coordinates = (33.65157, -117.83427)
-    if filtering == "Women's Only":
-        top_5 = _get_closest(coordinates, connection, filtering)
-    elif filtering == "Domestic Violence":
-        top_5 = _get_closest(coordinates, connection, filtering)
+    if type(coordinates) is int:
+        if filtering == "Women's Only":
+            shelters = _get_location_on_zip(connection, coordinates, filtering)
+        elif filtering == "Domestic Violence":
+            shelters = _get_location_on_zip(connection, coordinates, filtering)
+        else:
+            shelters = _get_location_on_zip(connection, coordinates)
     else:
-        top_5 = _get_closest(coordinates, connection)
-    
-    for locate in top_5:
-        shelters = _store_location_info(connection, locate, shelters)
+        shelters = []
+        if filtering == "Women's Only":
+            top_5 = _get_closest(coordinates, connection, filtering)
+        elif filtering == "Domestic Violence":
+            top_5 = _get_closest(coordinates, connection, filtering)
+        else:
+            top_5 = _get_closest(coordinates, connection)
+        
+        for locate in top_5:
+            shelters = _store_location_info(connection, locate, shelters)
 
     connection.close()
+    if not shelters:
+        shelters = "Nothing in your location."
     return shelters
 
 
@@ -137,5 +172,6 @@ def current_location(coordinates=location.access()):
 
 
 # coord = current_location((33.65157, -117.83427))
-# a = info_dict(coord, "Domestic Violence")
+# a = info_dict(90018, "Women's Only")
 # print(a)
+# print(len(a))
