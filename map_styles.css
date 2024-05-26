@@ -274,9 +274,6 @@ body {
     position:absolute;
     margin:1em auto;
     width:1em;
-    font-size: 7px;
-    top: 150px;
-    left: 880px;
   }
   
   .four-pointed-star:before{
@@ -296,3 +293,44 @@ body {
     height:1.15em;
     transform:rotate(45deg) skewX(22.5deg) skewY(22.5deg);
   }
+
+  .four-pointed-star-1 {
+    font-size: 7px;
+    top: 150px;
+    left: 880px;
+  }
+
+  .circles {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #EABFBF;
+    position: absolute;
+}
+
+.circles-1 {
+    top: 920px;
+    left: 110px;
+}
+
+
+.circles-2 {
+    top: 1090px;
+    left: 110px;
+}
+
+.circles-3 {
+    top: 1250px;
+    left: 110px;
+}
+
+
+.circles-4 {
+    top: 1410px;
+    left: 110px;
+}
+
+.circles-5 {
+    top: 1570px;
+    left: 110px;
+}
