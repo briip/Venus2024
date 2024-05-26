@@ -34,21 +34,21 @@ function getEmbedUrl(lat, lon, frame="mapiframe"){
     mapFrame.src = embedUrl;
     return embedUrl;
 }
+
 function getCurrentLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
         getEmbedUrl(lat,lon);
-        var response = sendData(lat,lon);
+        var filter = document.getElementById("filter").value;
+        var response = sendData(null,filter);
         if(response){
           generateResult(response);
         }
         else{
           generateResult();
         }
-        
-
       }, function(error) {
         switch(error.code) {
           case error.PERMISSION_DENIED:
@@ -76,6 +76,14 @@ function getLocation() {
     var encodedAddress = encodeURIComponent(address);
     var src = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodedAddress}`;
     mapFrame.src = src;
+    var filter = document.getElementById("filter").value;
+    var response = sendData(address, filter);
+    if(response){
+      generateResult(response);
+    }
+    else{
+      generateResult();
+    }
 
     fetch(src)
                 .then(response => response.json())
@@ -91,12 +99,12 @@ function getLocation() {
 
 }
 
-function sendData(latitude, longitude){
+function sendData(zipcode=null, filter=null){
   fetch('/',
   {
     method: 'POST',
     headers:{'Content-Type': 'application/json'},
-    body: JSON.stringify({latitude: latitude, longitude: longitude})
+    body: JSON.stringify({zipcode: zipcode})
   })
   .then(response =>{
     if(!response.ok){
