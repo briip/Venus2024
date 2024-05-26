@@ -120,100 +120,120 @@ body {
     margin-bottom: 50px;
 }
 
+#overflow1 {
+    display: inline-flex;
+    margin-left: 94px;
+    align-items: center;
+}
+
+#result1 {
+    margin-left: 25px;
+}
+
 #result1 p {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
-    margin-left: 320px;
 }
 
 #result1 h2 {
     font-weight: lighter;
-    margin-left: 320px;
     font-size: 25px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 50%;
+}
+#overflow2 {
+    display: inline-flex;
+    margin-left: 94px;
+    align-items: center;
 }
 
-#result1map {
-    top: 895px;
-    left: 190px;
-    position: absolute;
+#result2 {
+    margin-left: 25px;
 }
 
 #result2 p {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
-    margin-left: 320px;
 }
 
 #result2 h2 {
     font-weight: lighter;
-    margin-left: 320px;
     font-size: 25px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 50%;
 }
 
-#result2map {
-    top: 1052px;
-    left: 190px;
-    position: absolute;
+#overflow3 {
+    display: inline-flex;
+    margin-left: 94px;
+    align-items: center;
 }
+
+#result3 {
+    margin-left: 25px;
+}
+
 
 #result3 p {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
-    margin-left: 320px;
 }
 
 #result3 h2 {
     font-weight: lighter;
-    margin-left: 320px;
     font-size: 25px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 50%;
 }
 
-#result3map {
-    top: 1215px;
-    left: 190px;
-    position: absolute;
+
+#overflow4 {
+    display: inline-flex;
+    margin-left: 94px;
+    align-items: center;
 }
+
+#result4 {
+    margin-left: 25px;
+}
+
 
 #result4 p {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
-    margin-left: 320px;
 }
 
 #result4 h2 {
     font-weight: lighter;
-    margin-left: 320px;
     font-size: 25px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 50%;
 }
 
-#result4map {
-    top: 1378px;
-    left: 190px;
-    position: absolute;
+
+#overflow5 {
+    display: inline-flex;
+    margin-left: 94px;
+    align-items: center;
 }
+
+#result5 {
+    margin-left: 25px;
+}
+
 
 #result5 p {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
-    margin-left: 320px;
 }
 
 #result5 h2 {
     font-weight: lighter;
-    margin-left: 320px;
     font-size: 25px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 50%;
 }
 
-#result5map {
-    top: 1540px;
-    left: 190px;
-    position: absolute;
-}
 
 .moon {
     width: 50px;
