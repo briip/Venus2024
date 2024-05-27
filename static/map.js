@@ -1,12 +1,11 @@
 const apiKey = 'AIzaSyDqxeiEnKm-D4k2aHBWsPHfZ454_OMnXow';
-var default_locations = [{'name': "Women's And Children's Crisis Shelter", 'address': '13305 Penn St, NULL, Whittier, CA', 'hours': 'Administrative (562) 945-3937,  Service/Intake and Hotline (562) 945-3939', 'phone': 'NULL', 'email': 'NULL', 'description': 'The agency provides domestic violence services for low-income victims of intimate partner domestic violence and their children from all areas of Los Angeles County.', 'zipcode': '90602', 'latitude': 33.97583807, 'longitude': -118.0335874},
-{'name': 'Homeless Shelter For Women And Children', 'address': '4513 E. Compton Blvd., NULL, Compton, CA', 'hours': 'NULL', 'phone': 'NULL', 'email': 'www.cwroshelter.org', 'description': 'The Agency Provides Shelter For Homeless Single Women And Women With Children Who Are In Los Angeles County.  The Shelter May Assist Women Who Have Mental/Emotional Problems; The Shelter Is Also Accessible For Women Who Use Wheelchairs.', 'zipcode': '90221', 'latitude': 33.89643599, 'longitude': -118.1927356}, {'name': 'Womenshelter Of Long Beach', 'address': '930 Pacific Ave., NULL, Long Beach, CA', 'hours': 'Service/Intake and Administration (562) 437-7233,  FAX (562) 436-4943, 562) HER HOME - 24 hrs. Service/Intake and Hotline (562) 437-4663', 'phone': 'NULL', 'email': 'www.womenshelterlb.com/', 'description': 'The agency provides shelter and domestic violence services for victims of domestic violence and their children as well as volunteer opportunities for individuals living in Los Angeles County.', 'zipcode': '90813', 'latitude': 33.778375, 'longitude': -118.1933}, {'name': 'Interval House', 'address': '6615 E. Pacific Coast Highway, Outreach Office| Suite 170, Long Beach, CA', 'hours': 'Administrative (562) 594-9492, L A County - 24 hours Service/Intake and Hotline (562) 594-4555', 'phone': 'NULL', 'email': 'www.intervalhouse.org', 'description': "This agency provides domestic violence services, a battered women's shelter for battered women and their children and welfare-to-work support services to battered women who receive CalWORKs and live primarily in the Long Beach and the surrounding areas.", 'zipcode': '90803', 'latitude': 33.755173, 'longitude': -118.108203},
-{'name': 'Doors Of Hope', 'address': '529 Broad Ave, NULL, Wilmington, CA', 'hours': 'Service/Intake and Administration (310) 518-3667,  FAX (310) 513-6113', 'phone': 'NULL', 'email': 'www.doorsofhopewomensshelter.org', 'description': 'The agency provides shelter for single women in Los Angeles County.', 'zipcode': '90744', 'latitude': 33.7766381, 'longitude': -118.2610311}]
 
+var default_locations = [{'name': "Default Women's And Children's Crisis Shelter", 'address': '13305 Penn St, NULL, Whittier, CA', 'hours': 'Administrative (562) 945-3937,  Service/Intake and Hotline (562) 945-3939', 'phone': 'NULL', 'email': 'NULL', 'description': 'The agency provides domestic violence services for low-income victims of intimate partner domestic violence and their children from all areas of Los Angeles County.', 'zipcode': '90602', 'latitude': 33.97583807, 'longitude': -118.0335874}]
 var locations_from_zip= [];
 
 function generateResult(data=default_locations){
-  for(let i=0; i<data.length; i++){
+    var max_cards =5;
+  for(let i=0; i<max_cards; i++){
     var shelter_name = document.getElementById(`shelter_name${i+1}`);
     console.log(shelter_name);
     var shelter_info = document.getElementById(`shelter_info${i+1}`);
@@ -74,14 +73,14 @@ function getLocation() {
     var src = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodedAddress}`;
     mapFrame.src = src;
     var filter = document.getElementById("filter").value;
-    //var response = sendData(address, filter);
     sendData(address, filter);
-    var response= locations_from_zip;
-    if(response){
-      generateResult(response);
+
+    if(locations_from_zip){
+      generateResult(locations_from_zip);
     }
     else{
       generateResult();
+      //generateResult(locations_from_zip);
     }
 
     fetch(src)

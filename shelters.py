@@ -7,7 +7,7 @@ import json
 
 
 Distance = namedtuple("Distance", ['x', 'y', 'euclidean_distance'])
-_CONNECTION_PATH = "c:/Coding/VenusHacks2024/Venus2024/Persephone.db"
+_CONNECTION_PATH = "C:/Users/briip/Documents/uci/vhacks/MyVenus2024/MyVenus/Venus2024/Persephone.db"
 
 
 def _calculate_distance(lat: int, long: int, coordinates) -> Distance:
@@ -108,7 +108,7 @@ def _get_location_on_zip(connection: sqlite3.Connection, search_zip, filtering =
         descs = filters.filter_womens(connection)
     elif filtering == "Domestic Violence":
         descs = filters.filter_dv(connection)
-    command = f"SELECT * FROM Shelter WHERE zip = {search_zip};"
+    command = f"SELECT DISTINCT * FROM Shelter WHERE zip = {search_zip} LIMIT 5;"
     cursor = connection.execute(command)
     location_info = cursor.fetchall()
     cursor.close()
@@ -131,7 +131,7 @@ def _get_location_on_zip(connection: sqlite3.Connection, search_zip, filtering =
 
 
 def _store_location_info(connection: sqlite3.Connection, distance: Distance, store: list):
-    command = f"SELECT * FROM Shelter WHERE latitude = {distance[0]} AND longitude = {distance[1]};"
+    command = f"SELECT * FROM Shelter WHERE latitude = {distance[0]} AND longitude = {distance[1]} LIMIT 5;"
     cursor = connection.execute(command)
     location_info = cursor.fetchall()
     cursor.close()
