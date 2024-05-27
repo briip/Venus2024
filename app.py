@@ -5,14 +5,17 @@ app = Flask(__name__)
 
 @app.route("/map.html")
 def map():
+    print("wassup")
     return render_template('map.html')
 
 @app.route('/', methods=["POST"])
 def getdata():
     data_received = request.get_json()
     zipcode = data_received['zipcode']
-    filter = data_received['filter']
-
+    # filter = data_received['filter']
+    print("hello")
+    print("zipcode")
+    print(zipcode)
     if zipcode:
         coord = shelters.current_location(zipcode)
     else:
@@ -34,4 +37,4 @@ def hello_world():  # put application's code here
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5003, debug=True)
